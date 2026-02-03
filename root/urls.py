@@ -11,6 +11,7 @@ handler403 = 'commonapp.views.error_403'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('dashboardapp.urls')),
 ] + [path(f'{app}/', include(f'{app}.urls')) for app in CREATED_APPS]
 
 

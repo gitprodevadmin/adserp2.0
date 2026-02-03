@@ -15,4 +15,5 @@ CREATED_APPS = [
     'commonapp',
     'websiteapp', 
     'web2030app',
+    'dashboardapp',
 ]
