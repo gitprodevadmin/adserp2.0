@@ -1,0 +1,54 @@
+services:
+  adssoftware_db:
+    image: mysql:8.0
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - adssoftware_network
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+  adssoftware_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: adssoftware_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    env_file:
+      - .env
+    networks:
+      - adssoftware_network
+    depends_on:
+      adssoftware_db:
+        condition: service_healthy
+
+  adssoftware:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: adssoftware:latest
+    container_name: adssoftware_main
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - adssoftware_network
+    depends_on:
+      adssoftware_db:
+        condition: service_healthy
+      adssoftware_phpmyadmin:
+        condition: service_started
+
+
+networks:
+  adssoftware_network:
+    driver: bridge
