@@ -40,6 +40,7 @@ os.makedirs(BASE_DIR / 'media', exist_ok=True)
 os.makedirs(BASE_DIR / 'static', exist_ok=True)
 os.makedirs(BASE_DIR / 'static_files', exist_ok=True)
 os.makedirs(BASE_DIR / 'temp', exist_ok=True)
+os.makedirs(BASE_DIR / 'templates', exist_ok=True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -63,8 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'accountapp.middlewares.UserActivityMiddleware',
-    'app.middleware.Enforce2FAMiddleware',
+    # 'accountapp.middlewares.UserActivityMiddleware',
+    # 'app.middleware.Enforce2FAMiddleware',
 ]
 
 TEMPLATES = [

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modern-ui.css' %}">
+    <title>Ads Control | {% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="/static/icon/favicon.ico">
+
+
+    {% block header_css %}{% endblock %}
+    {% block header_js %}{% endblock %}
+
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'layout/header.html' %}
+        <div class="container-fluid pb-5">      
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {% include 'layout/footer.html' %}
+</body>
+</html>

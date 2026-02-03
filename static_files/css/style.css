@@ -1,0 +1,156 @@
+/* Theme gradient colors matching logo */
+:root {
+  --theme-gradient-start: #529956;
+  --theme-gradient-end: #1248a4;
+}
+
+/* Primary button gradient */
+.btn-primary {
+  background: #1248a4;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #1867e6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px #1867e6;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+  background: #1248a4;
+  box-shadow: 0 2px 8px #1867e6;
+}
+
+/* Alert primary gradient */
+.alert-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(82, 153, 86, 0.1) 0%,
+    rgba(18, 72, 164, 0.1) 100%
+  );
+  border-color: var(--theme-gradient-start);
+  color: var(--theme-gradient-end);
+}
+
+/* Badge primary gradient */
+.badge.bg-primary {
+  background: linear-gradient(
+    135deg,
+    var(--theme-gradient-start) 0%,
+    var(--theme-gradient-end) 100%
+  ) !important;
+}
+
+/* Link primary color */
+a.text-primary,
+.text-primary {
+  color: var(--theme-gradient-start) !important;
+}
+
+/* Border primary */
+.border-primary {
+  border-color: var(--theme-gradient-start) !important;
+}
+
+/* Outline primary button */
+.btn-outline-primary {
+  border-color: var(--theme-gradient-start);
+  color: var(--theme-gradient-start);
+}
+
+.btn-outline-primary:hover {
+  background: linear-gradient(
+    135deg,
+    var(--theme-gradient-start) 0%,
+    var(--theme-gradient-end) 100%
+  );
+  border-color: var(--theme-gradient-start);
+  color: white;
+}
+
+/* Nav tabs active */
+.nav-tabs .nav-link.active {
+  background: linear-gradient(
+    135deg,
+    rgba(82, 153, 86, 0.1) 0%,
+    rgba(18, 72, 164, 0.1) 100%
+  );
+  border-color: var(--theme-gradient-start);
+  color: var(--theme-gradient-end);
+}
+
+/* Progress bar primary */
+.progress-bar.bg-primary {
+  background: linear-gradient(
+    90deg,
+    var(--theme-gradient-start) 0%,
+    var(--theme-gradient-end) 100%
+  ) !important;
+}
+/* Make room for fixed top navbar */
+body {
+  padding-top: 72px;
+}
+
+.app-navbar {
+  background: #529956;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.app-navbar .navbar-brand img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  background: #f5f5f5;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.5rem;
+  padding: 0.35rem;
+}
+
+.app-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 0.5rem;
+}
+
+/* Override global dropdown positioning rule (if present) for navbar dropdowns */
+.app-navbar .dropdown-menu[data-bs-popper] {
+  left: 0 !important;
+  right: auto !important;
+}
+
+.app-navbar .dropdown-menu {
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+  padding: 0.5rem;
+  min-width: 16rem;
+}
+
+.app-navbar .dropdown-item {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.app-navbar .dropdown-item:hover {
+  background: rgba(82, 153, 86, 0.12);
+}
+
+/* Notification badge positioning inside navbar */
+#notification-icon {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+#notification-icon:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}

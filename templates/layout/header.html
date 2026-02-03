@@ -1,0 +1,253 @@
+<nav class="navbar navbar-expand-lg navbar-dark app-navbar fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'Home' %}">
+        <img src="/static/images/logo.png" alt="Logo">
+        
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Dashboard' %}">
+              <i class="bi bi-speedometer2 me-1"></i>Dashboard
+            </a>
+          </li>
+  
+          {% if perms.adspect.view_stream or perms.digitalocean.view_liveurltable or perms.digitalocean.view_digitaloceanaccounttable or perms.appgithub.view_githubtable or perms.appgithub.view_githubrepotable or perms.campaign.view_campaigntable or perms.app.view_callrecordtable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navCampaigns" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-bullseye me-1"></i>Campaigns
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navCampaigns">
+              {% if perms.adspect.view_stream %}
+              <li><a class="dropdown-item" href="{% url 'Adspect-List-Stream' %}">Adspect</a></li>
+              {% endif %}
+              {% if perms.digitalocean.view_liveurltable %}
+              <li><a class="dropdown-item" href="{% url 'LiveURL-List-App' %}">Live URL</a></li>
+              {% endif %}
+              {% if perms.digitalocean.view_digitaloceanaccounttable %}
+              <li><a class="dropdown-item" href="{% url 'Digitalocean-List-Account' %}">Digitalocean Account</a></li>
+              {% endif %}
+              {% if perms.appgithub.view_githubrepotable %}
+              <li><a class="dropdown-item" href="{% url 'Github-Repo-List' %}">Github Repo</a></li>
+              {% endif %}
+              {% if perms.campaign.view_campaigntable %}
+              <li><a class="dropdown-item" href="{% url 'Campaign-List' %}">Cloaking Setup</a></li>
+              {% endif %}
+              {% if perms.campaign.view_campaignvendortable %}
+              <li><a class="dropdown-item" href="{% url 'Campaign-Vendor-List' %}">Vendor</a></li>
+              {% endif %}
+              {% if perms.app.view_callrecordtable %}
+              <li><a class="dropdown-item" href="{% url 'Call-Count' %}">Call Count</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+  
+          {% if perms.proxyapp.view_proxydetailstable or perms.proxyapp.view_proxydetailsnumbertable or perms.platformapp.view_platformtable or perms.domain.view_domaintable or perms.webmailapp.view_webmailtable or perms.proxyapp.view_socialmediatable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navProxy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-router me-1"></i>Proxy
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navProxy">
+              {% if perms.proxyapp.view_proxydetailstable %}
+              <li><a class="dropdown-item" href="{% url 'Proxy-List' %}">Proxy</a></li>
+              {% endif %}
+              {% if perms.proxyapp.view_proxydetailsnumbertable %}
+              <li><a class="dropdown-item" href="{% url 'Proxy-Number-List' %}">Proxy Number</a></li>
+              {% endif %}
+              {% if perms.platformapp.view_platformtable %}
+              <li><a class="dropdown-item" href="{% url 'Platform-List' %}">Platform</a></li>
+              {% endif %}
+              {% if perms.domain.view_domaintable %}
+              <li><a class="dropdown-item" href="{% url 'Domain-List' %}">Domain</a></li>
+              {% endif %}
+              {% if perms.webmailapp.view_webmailtable %}
+              <li><a class="dropdown-item" href="{% url 'Webmail-List' %}">Webmail</a></li>
+              {% endif %}
+              {% if perms.proxyapp.view_socialmediatable %}
+              <li><a class="dropdown-item" href="{% url 'Social-Media-List' %}">Social Media</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+  
+          {% if perms.website.view_siteregistationtable or perms.website.view_websiteniches or perms.website.view_websitetype or perms.website.view_servertable or perms.website.view_bannertable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navWebsites" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-globe me-1"></i>Websites
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navWebsites">
+              {% if perms.website.view_siteregistationtable %}
+              <li><a class="dropdown-item" href="{% url 'Site-Filter-List' 0 %}">Websites</a></li>
+              {% endif %}
+              {% if perms.website.view_websiteniches %}
+              <li><a class="dropdown-item" href="{% url 'Niche-List' %}">Niche</a></li>
+              {% endif %}
+              {% if perms.website.view_websitetype %}
+              <li><a class="dropdown-item" href="{% url 'Site-Type-List' %}">Website Type</a></li>
+              {% endif %}
+              {% if perms.website.view_servertable %}
+              <li><a class="dropdown-item" href="{% url 'Server-List' %}">Server</a></li>
+              {% endif %}
+              {% if perms.website.view_bannertable %}
+              <li><a class="dropdown-item" href="{% url 'Banner-List' %}">Banner</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+  
+          {% if perms.web2030.view_web2030table or perms.web2030.view_web2030platformtypetable or perms.web2030.view_web2030domaintable or perms.web2030.view_web2030rdptable or perms.web2030.view_web2030proxytable or perms.web2030.view_web2030contenttable or perms.web2030.view_web2030keywordtable or perms.web2030.view_web2030vendortable or perms.web2030.view_web2030seolinktypetable or perms.web2030.view_web2030rankingtable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navWeb2030" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-boxes me-1"></i>Web2030
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navWeb2030">
+              {% if perms.web2030.view_web2030table %}
+              <li><a class="dropdown-item" href="{% url 'Web2030-List' %}">Web2030</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030platformtypetable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Platformtype-List' %}">Platform</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030domaintable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Domain-List' %}">Website</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030rdptable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030RDP-List' %}">RDP</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030proxytable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Proxy-List' %}">Proxy</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030contenttable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Content-List' %}">Content</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030keywordtable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Keyword-List' %}">Keyword</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030vendortable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Vendor-List' %}">Vendor</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030seolinktypetable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030SEOLinkType-List' %}">SEOLinkType</a></li>
+              {% endif %}
+              {% if perms.web2030.view_web2030rankingtable %}
+              <li><a class="dropdown-item" href="{% url 'Web2030Ranking-List' %}">Ranking</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+  
+          {% if perms.resources.view_resourcesadbtable or perms.resources.view_resourcesbravotable or perms.resources.view_resourcesnodemaventable or perms.resources.view_resourcescontabotable or perms.resources.view_resourcescontenttable or perms.resources.add_resourcesemailapitable or perms.resources.view_resourcescloudflaretable or perms.resources.view_resourcescloudservertable or perms.resources.view_resourcesgithubtable or perms.resources.view_resellerclubtable or view_resourcesemailapitable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navResources" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-archive me-1"></i>Resources
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navResources">
+              {% if perms.resources.view_resourcesadbtable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesAdb-List' %}">ADB</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcesbravotable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesBreavo-List' %}">Breavo</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcesnodemaventable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesNodemaven-List' %}">Nodemaven</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcescontabotable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesContabo-List' %}">Contabo</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcescontenttable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesContent-List' %}">Content</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcesemailapitable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesEmailAPI-List' %}">Email API</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcescloudflaretable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesCloudFlare-List' %}">CloudFlare</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcescloudservertable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesCloudServer-List' %}">Cloud Server</a></li>
+              {% endif %}
+              {% if perms.resources.view_resellerclubtable %}
+              <li><a class="dropdown-item" href="{% url 'Resellerclub-List' %}">resellerclub</a></li>
+              {% endif %}
+              {% if perms.resources.view_resourcesgithubtable %}
+              <li><a class="dropdown-item" href="{% url 'ResourcesGithub-List' %}">Github</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+  
+          {% if perms.devops.view_devopsgithubtable or perms.devops.view_devopsjenkinstable or perms.devops.view_devopsharbortable or perms.devops.view_devopsargocdtable or perms.devops.view_devopscloudflaretable or perms.devops.view_devopsdomaintable or perms.devops.view_devopspipelinetable or perms.devops.view_devopspipelineroutingtable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navDevops" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-gear me-1"></i>Devops
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navDevops">
+              {% if perms.devops.view_devopsgithubtable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsGithub-List' %}">Github</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopsjenkinstable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsJenkins-List' %}">Jenkins</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopsharbortable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsHarbor-List' %}">Harbor</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopsargocdtable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsArgocd-List' %}">Argocd</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopscloudflaretable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsCloudflare-List' %}">Cloudflare</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopsdomaintable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsDomain-List' %}">Domain</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopspipelinetable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsPipeline-List' %}">Pipeline</a></li>
+              {% endif %}
+              {% if perms.devops.view_devopspipelineroutingtable %}
+              <li><a class="dropdown-item" href="{% url 'DevopsPipelineRouting-List' %}">Routing</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+  
+          {% if perms.accountapp.view_user or perms.accountapp.view_group or perms.app.view_configarationtable %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navActivity" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-badge me-1"></i>Activity
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navActivity">
+              {% if perms.accountapp.view_user %}
+              <li><a class="dropdown-item" href="{% url 'Account-List' %}">User</a></li>
+              {% endif %}
+              {% if perms.accountapp.view_group %}
+              <li><a class="dropdown-item" href="{% url 'Group-List' %}">Group</a></li>
+              {% endif %}
+              {% if perms.app.view_configarationtable %}
+              <li><a class="dropdown-item" href="{% url 'Settings-List' %}">Settings</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+  
+        <div class="d-flex align-items-center gap-2">
+          <a class="position-relative" href="#" id="notification-icon" aria-label="Notifications">
+            <i class="bi bi-bell" style="font-size: 1.25rem;"></i>
+            <span class="position-absolute top-5 start-75 translate-middle badge rounded-pill bg-danger" id="notificationbadge" style="font-size: 0.7rem;">0</span>
+          </a>
+  
+          <form method="POST" action="{% url 'logout' %}" class="m-0">
+            {% csrf_token %}
+            <button class="btn btn-light btn-sm" type="submit">
+              <i class="bi bi-box-arrow-right me-1"></i>Logout
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>

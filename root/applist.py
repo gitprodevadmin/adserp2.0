@@ -8,4 +8,11 @@ INSTALL_APPS = [
 
 
 CREATED_APPS = [
+    'accountapp',
+    'campaignsapp',
+    'devopsapp',
+    'resourcesapp',
+    'commonapp',
+    'websiteapp', 
+    'web2030app',
 ]

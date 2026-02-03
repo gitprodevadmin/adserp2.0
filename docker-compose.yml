@@ -47,6 +47,10 @@ services:
         condition: service_healthy
       adssoftware_phpmyadmin:
         condition: service_started
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
 
 
 networks:

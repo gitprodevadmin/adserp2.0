@@ -1,0 +1,29 @@
+# Ignore Python cache files
+__pycache__/
+migrations/
+*.pyc
+
+# Ignore virtual environment
+venv/
+.env
+
+# Ignore database files
+*.sqlite3
+db.sqlite3
+
+# Ignore logs
+*.log
+
+# Ignore the Git directory
+.git/
+
+mysql_data
+docker-compose.yml
+Dockerfile
+country_asn.mmdb
+media/
+static/
+static2/
+logs/
+celerybeat-schedule
+data/
